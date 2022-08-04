@@ -3,9 +3,11 @@ package user;
 public class Student extends User implements BasicUser{
 
 
+    public Student(){
+    }
 
-    public Student(String username, String firstName, String lastName, String email, String role) {
-        super(username, firstName, lastName, email, role);
+    public Student(String firstName, String lastName, String email, String role) {
+        super(firstName, lastName, email, role);
     }
 
     @Override

@@ -1,1 +1,0 @@
-{"id":1,"username":"arif","firstName":"Ariful","email":"hoque57@gmail.com","role":"Teacher","course":[{"courseName":"CSE"},{"courseName":"CSE"},{"courseName":"CSE"}],"lastName":"Hoque"}

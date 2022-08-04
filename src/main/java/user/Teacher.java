@@ -13,10 +13,9 @@ public class Teacher extends User implements BasicUser{
         course = new LinkedList<>();
     }
 
-    public Teacher(String username, String firstName, String lastName, String email, String role) {
-        super(username, firstName, lastName, email, role);
+    public Teacher(String firstName, String lastName, String email, String role) {
+        super(firstName, lastName, email, role);
         course = new LinkedList<>();
-
     }
 
     @Override
