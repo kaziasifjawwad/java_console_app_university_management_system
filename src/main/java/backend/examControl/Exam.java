@@ -1,7 +1,7 @@
-package examControl;
-import course.Course;
-import user.Student;
-import user.Teacher;
+package backend.examControl;
+import backend.course.Course;
+import backend.user.Student;
+import backend.user.Teacher;
 
 public class Exam {
     private double totalMarks;

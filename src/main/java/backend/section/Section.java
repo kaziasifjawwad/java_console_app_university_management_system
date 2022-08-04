@@ -1,7 +1,8 @@
-package section;
-import course.Course;
-import user.Student;
-import user.Teacher;
+package backend.section;
+import backend.user.Teacher;
+import backend.course.Course;
+import backend.user.Student;
+
 import java.util.LinkedList;
 import java.util.List;
 

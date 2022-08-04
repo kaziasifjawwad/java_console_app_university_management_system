@@ -1,4 +1,4 @@
-package user;
+package backend.user;
 
 public interface BasicUser {
 

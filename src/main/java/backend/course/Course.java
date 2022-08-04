@@ -1,4 +1,4 @@
-package course;
+package backend.course;
 
 public class Course {
     private String courseName;

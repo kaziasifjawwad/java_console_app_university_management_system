@@ -1,4 +1,4 @@
-package user;
+package backend.user;
 
 public class User {
     private String firstName,LastName;

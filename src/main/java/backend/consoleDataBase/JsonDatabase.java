@@ -1,17 +1,14 @@
-package consoleDataBase;
+package backend.consoleDataBase;
 
+import backend.course.Course;
+import backend.examControl.Exam;
+import backend.section.Section;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import course.Course;
-import examControl.Exam;
-import section.Section;
-import user.Teacher;
-import user.User;
+import backend.user.User;
 import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.nio.file.*;
-import java.util.Map;
 
 public class JsonDatabase {
     private ObjectMapper objectMapper;

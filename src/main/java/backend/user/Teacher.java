@@ -1,6 +1,6 @@
-package user;
+package backend.user;
 
-import course.Course;
+import backend.course.Course;
 
 import java.util.LinkedList;
 import java.util.List;

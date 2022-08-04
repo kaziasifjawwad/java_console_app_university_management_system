@@ -1,4 +1,4 @@
-package user;
+package backend.user;
 
 public class Student extends User implements BasicUser{
 
