@@ -1,0 +1,13 @@
+org\brainstation\backend\consoleDataBase\JsonDatabase.class
+org\brainstation\backend\section\Section.class
+org\brainstation\backend\user\Teacher.class
+org\brainstation\PrimaryController.class
+org\brainstation\backend\user\Student.class
+org\brainstation\SecondaryController.class
+org\brainstation\backend\user\User.class
+org\brainstation\backend\examControl\Exam.class
+org\brainstation\App.class
+org\brainstation\backend\user\BasicUser.class
+org\brainstation\backend\consoleDataBase\oldSystem\FileWriter.class
+org\brainstation\backend\consoleDataBase\oldSystem\StudentDataBase.class
+org\brainstation\backend\course\Course.class
