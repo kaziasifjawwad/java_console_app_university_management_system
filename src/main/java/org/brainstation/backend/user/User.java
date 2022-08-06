@@ -1,7 +1,9 @@
 package org.brainstation.backend.user;
 
 public class User {
-    private String firstName,LastName;
+
+    private  int userid;
+    private String firstName,lastName;
     private String email;
     private String role;
 
@@ -11,7 +13,7 @@ public class User {
 
     public User( String firstName, String lastName, String email, String role) {
         this.firstName = firstName;
-        LastName = lastName;
+        this.lastName = lastName;
         this.email = email;
         this.role = role;
     }
@@ -26,11 +28,11 @@ public class User {
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        lastName = lastName;
     }
 
     public String getEmail() {
@@ -47,5 +49,13 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 }

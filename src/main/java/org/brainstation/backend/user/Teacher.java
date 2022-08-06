@@ -1,6 +1,7 @@
 package org.brainstation.backend.user;
 
 
+import org.brainstation.backend.consoleDataBase.DatabaseConfiguration;
 import org.brainstation.backend.course.Course;
 
 import java.util.LinkedList;
@@ -8,15 +9,15 @@ import java.util.List;
 
 public class Teacher extends User implements BasicUser{
 
-    private List<Course> course;
+    private List<Integer> coursesId;
 
     public Teacher(){
-        course = new LinkedList<>();
+        coursesId = new LinkedList<>();
     }
 
     public Teacher(String firstName, String lastName, String email, String role) {
         super(firstName, lastName, email, role);
-        course = new LinkedList<>();
+        coursesId = new LinkedList<>();
     }
 
     @Override
@@ -34,17 +35,34 @@ public class Teacher extends User implements BasicUser{
 
     }
 
-    @Override
-    public String toString() {
-        return "Teacher{" +
-                "course=" + course +
-                '}';
+
+    public List<Integer> getCourse() {
+        return coursesId;
+    }
+    public void setCourseId(int courseId) {
+        this.coursesId.add(courseId);
     }
 
-    public List<Course> getCourse() {
-        return course;
+    public void setCourses(List<Integer> course) {
+        this.coursesId = course;
     }
-    public void setCourse(Course course) {
-        this.course.add(course);
+
+    public List<Integer> getCourses() {
+        return coursesId;
+    }
+
+    public String toString(){
+        String splitter = DatabaseConfiguration.splitter;
+        return this.getUserid()+
+                splitter+
+                this.getFirstName()+
+                splitter+
+                this.getLastName()+
+                splitter+
+                this.getEmail()+
+                splitter+
+                this.getRole()+
+                splitter+
+                this.getCourse().toString();
     }
 }

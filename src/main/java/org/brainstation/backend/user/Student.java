@@ -1,5 +1,7 @@
 package org.brainstation.backend.user;
 
+import org.brainstation.backend.consoleDataBase.DatabaseConfiguration;
+
 public class Student extends User implements BasicUser{
 
 
@@ -27,6 +29,16 @@ public class Student extends User implements BasicUser{
 
     @Override
     public String toString() {
-        return "Student{}";
+//        String firstName, String lastName, String email, String role
+        String splitter = DatabaseConfiguration.splitter;
+        return this.getUserid()+
+                splitter+
+                this.getFirstName()+
+                splitter+
+                this.getLastName()+
+                splitter+
+                this.getEmail()+
+                splitter+
+                this.getRole();
     }
 }

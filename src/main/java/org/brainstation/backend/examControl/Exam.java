@@ -6,6 +6,7 @@ import org.brainstation.backend.user.Student;
 import org.brainstation.backend.user.Teacher;
 
 public class Exam {
+    private static int examId;
     private double totalMarks;
     private double obtainedMarks;
     private Course course;
@@ -13,6 +14,7 @@ public class Exam {
     private Teacher teacher;
     private double passMarks;
 
+    public Exam(){}
     public Exam(double totalMarks, double obtainedMarks, Course course, Student student, Teacher teacher, double passMarks) {
         this.totalMarks = totalMarks;
         this.obtainedMarks = obtainedMarks;
@@ -69,5 +71,13 @@ public class Exam {
 
     public void setPassMarks(double passMarks) {
         this.passMarks = passMarks;
+    }
+
+    public int getExamId() {
+        return examId;
+    }
+
+    public void setExamId(int examId) {
+        this.examId = examId;
     }
 }
