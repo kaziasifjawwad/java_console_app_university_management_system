@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import org.brainstation.backend.consoleDataBase.Database;
 import org.brainstation.backend.user.Teacher;
 import org.brainstation.backend.user.User;
@@ -41,12 +42,12 @@ public class TeacherFormController implements Initializable {
     private TableColumn<Teacher, String> lastName_p;
 
     @FXML
-    private Button saveTeacher;
+    private TableColumn<Teacher, Button> updateTeacher;
+
     
     private Database database;
 
     private ObservableList<Teacher> teachers;
-
     public TeacherFormController(){
         this.database = Database.getInstance();
 
@@ -60,12 +61,14 @@ public class TeacherFormController implements Initializable {
         );
         System.out.println(teacher);
         database.saveTeacher(teacher);
+        database.save();
         updateTeachers();
     }
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateTeachers();
+        editableCols();
     }
 
     public void updateTeachers(){
@@ -73,6 +76,38 @@ public class TeacherFormController implements Initializable {
         firstName_p.setCellValueFactory(new PropertyValueFactory<Teacher, String>("firstName"));
         lastName_p.setCellValueFactory(new PropertyValueFactory<Teacher, String>("lastName"));
         email_p.setCellValueFactory(new PropertyValueFactory<Teacher, String>("email"));
+        updateTeacher.setCellValueFactory(new PropertyValueFactory<Teacher, Button>("updateButton"));
         tableOtTeacher.setItems(teachers);
+
+
+    }
+
+    private void editableCols(){
+        firstName_p.setCellFactory(TextFieldTableCell.forTableColumn());
+        firstName_p.setOnEditCommit(
+                e->{
+                    e.getTableView().getItems().get(
+                            e.getTablePosition().getRow()
+                    ).setFirstName(e.getNewValue());
+                }
+        );
+
+        email_p.setCellFactory(TextFieldTableCell.forTableColumn());
+        email_p.setOnEditCommit(
+                e->{
+                    e.getTableView().getItems().get(
+                            e.getTablePosition().getRow()
+                    ).setFirstName(e.getNewValue());
+                }
+        );
+        lastName_p.setCellFactory(TextFieldTableCell.forTableColumn());
+        lastName_p.setOnEditCommit(
+                e->{
+                    e.getTableView().getItems().get(
+                            e.getTablePosition().getRow()
+                    ).setFirstName(e.getNewValue());
+                }
+        );
+        tableOtTeacher.setEditable(true);
     }
 }

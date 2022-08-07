@@ -11,21 +11,22 @@
    <top>
       <AnchorPane prefHeight="124.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="firstName" layoutX="14.0" layoutY="62.0" prefHeight="25.0" prefWidth="131.0" promptText="First Name" />
-            <TextField fx:id="email" layoutX="318.0" layoutY="62.0" prefHeight="25.0" prefWidth="131.0" promptText="Email" />
-            <TextField fx:id="lastName" layoutX="169.0" layoutY="62.0" prefHeight="25.0" prefWidth="131.0" promptText="Last name" />
-            <Button fx:id="saveteacher" layoutX="496.0" layoutY="62.0" mnemonicParsing="false" onAction="#saveTeacher" text="Save" />
+            <TextField fx:id="firstName" layoutX="29.0" layoutY="62.0" prefHeight="25.0" prefWidth="131.0" promptText="First Name" />
+            <TextField fx:id="email" layoutX="358.0" layoutY="62.0" prefHeight="25.0" prefWidth="131.0" promptText="Email" />
+            <TextField fx:id="lastName" layoutX="181.0" layoutY="62.0" prefHeight="25.0" prefWidth="131.0" promptText="Last name" />
+            <Button fx:id="saveteacher" layoutX="545.0" layoutY="62.0" mnemonicParsing="false" onAction="#saveTeacher" text="Save" />
          </children>
       </AnchorPane>
    </top>
    <center>
       <AnchorPane prefHeight="173.0" prefWidth="680.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tableOtTeacher" layoutX="42.0" prefHeight="200.0" prefWidth="501.0">
+            <TableView fx:id="tableOtTeacher" layoutX="14.0" prefHeight="200.0" prefWidth="570.0">
               <columns>
                 <TableColumn fx:id="firstName_p" prefWidth="100.0" text="First Name" />
                 <TableColumn fx:id="lastName_p" prefWidth="109.0" text="Last Name" />
                   <TableColumn fx:id="email_p" prefWidth="111.0" text="Email" />
+                  <TableColumn fx:id="updateTeacher" prefWidth="75.0" text="Update" />
               </columns>
             </TableView>
          </children>

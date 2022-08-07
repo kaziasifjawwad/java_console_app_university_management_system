@@ -1,5 +1,7 @@
 package org.brainstation.backend.user;
 
+import javafx.scene.control.Button;
+
 public class User {
 
     private  int userid;
@@ -7,15 +9,24 @@ public class User {
     private String email;
     private String role;
 
-    public User(){
-
+    public Button getUpdateButton() {
+        return updateButton;
     }
+
+    public void setUpdateButton(Button updateButton) {
+        this.updateButton = updateButton;
+    }
+
+    private Button updateButton;
+
+    public User(){}
 
     public User( String firstName, String lastName, String email, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.role = role;
+        this.updateButton = new Button("Update");
     }
 
 
