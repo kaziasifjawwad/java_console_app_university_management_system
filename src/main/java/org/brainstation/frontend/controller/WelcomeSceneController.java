@@ -10,7 +10,8 @@ import org.brainstation.frontend.WelcomeScreen;
 public class WelcomeSceneController {
 
     @FXML
-    private void switchToPrimary() throws IOException {
-        WelcomeScreen.setRoot("primary");
+    private void switchToTeacher() throws IOException {
+        System.out.println("hellooo");
+        WelcomeScreen.setRoot("teacherForm");
     }
 }

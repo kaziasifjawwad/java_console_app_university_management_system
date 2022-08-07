@@ -34,7 +34,7 @@ public class Database {
             jsonDatabase.teacherDatabase = TeacherDatabase.getInstance();
             jsonDatabase.courseDataBase = CourseDataBase.getInstance();
 //            jsonDatabase.studentDataBase = StudentDataBase.getInstance();
-//            jsonDatabase.modelId = getModelIdFile();
+            jsonDatabase.modelId = getModelIdFile();
         }
         return jsonDatabase;
     }

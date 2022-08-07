@@ -12,9 +12,12 @@ import java.io.IOException;
 public class App extends Application {
 
 //    private static Scene scene;
+    private static Stage stage;
     private static WelcomeScreen teacherView;
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage primarystage) throws IOException {
+        stage = primarystage;
+        stage.setResizable(false);
         try{
             teacherView.showWelcomeScene(stage);
         }catch (Exception e){

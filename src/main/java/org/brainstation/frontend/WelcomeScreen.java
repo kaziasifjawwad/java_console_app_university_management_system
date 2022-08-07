@@ -12,13 +12,13 @@ public class WelcomeScreen {
     private static Scene scene;
 
     public void showWelcomeScene(Stage stage) throws Exception{
-        scene = new Scene(loadFXML("welcome"));
-//        scene.getStylesheets().add(App.class.getResource("styles.css").toExternalForm());
+        scene = new Scene(loadFXML("welcome"),800,800);
         stage.setScene(scene);
         stage.show();
     }
 
     public static void setRoot(String fxml) throws IOException {
+        System.out.println("helloo");
         scene.setRoot(loadFXML(fxml));
     }
 

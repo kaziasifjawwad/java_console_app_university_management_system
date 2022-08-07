@@ -8,6 +8,6 @@ public class SecondaryController {
 
     @FXML
     private void switchToPrimary() throws IOException {
-        WelcomeScreen.setRoot("welcomeScene");
+        WelcomeScreen.setRoot("primary");
     }
 }
