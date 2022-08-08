@@ -92,11 +92,16 @@ public class Database {
         HelperDatabaseClass.saveLine(this.modelId,DatabaseConfiguration.idHandler);
     }
     public Course getCourseById(int courseId){return this.courseDataBase.getCourseById(courseId);}
+    public void deleteCourse(Course course){
+        this.courseDataBase.deleteCourse(course);
+    }
 
     public void save(){
         this.teacherDatabase.saveAllTeacher();
         this.courseDataBase.saveAllCourse();
     }
+
+
 
 
 

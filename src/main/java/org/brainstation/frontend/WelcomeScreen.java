@@ -12,19 +12,18 @@ public class WelcomeScreen {
     private static Scene scene;
 
     public void showWelcomeScene(Stage stage) throws Exception{
-        scene = new Scene(loadFXML("welcome"),800,800);
+        scene = new Scene(loadFXML("courseForm"),800,800);
+        System.out.println(scene+"***************************");
         stage.setScene(scene);
         stage.show();
     }
 
     public static void setRoot(String fxml) throws IOException {
-        System.out.println("helloo");
         scene.setRoot(loadFXML(fxml));
     }
 
     public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        System.out.println(fxmlLoader+"\t\t"+fxmlLoader);
         return fxmlLoader.load();
     }
 }

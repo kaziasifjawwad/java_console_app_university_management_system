@@ -78,4 +78,8 @@ public class CourseDataBase {
     }
     public void saveAllCourse(){HelperDatabaseClass.saveData(this.courselist,DatabaseConfiguration.courseDataPath);}
 
+    public void deleteCourse(Course course){
+        this.courselist.remove(course);
+    }
+
 }
