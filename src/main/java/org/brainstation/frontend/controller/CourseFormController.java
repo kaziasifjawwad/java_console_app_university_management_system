@@ -4,11 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.brainstation.App;
 import org.brainstation.backend.consoleDataBase.Database;
 import org.brainstation.backend.course.Course;
 import org.brainstation.backend.user.Teacher;
@@ -119,17 +123,8 @@ public class CourseFormController implements Initializable{
 
                         btn.setOnAction((ActionEvent event) -> {
                             Course data = getTableView().getItems().get(getIndex());
-                            Stage stage = new Stage();
                             try{
-//                                FXMLLoader loader = new FXMLLoader(App.class.getResource("teacherProfile.fxml"));
-//                                Parent load = loader.load();
-//                                Scene scene = new Scene(load,800,800);
-//                                System.out.println(scene+"==============");
-//                                TeacherIndividualProfileController teacher = loader.getController();
-//                                teacher.setTeacher(data);
-//                                stage.setScene(scene);
-//                                stage.show();
-                                TeacherIndividualCourseProfileController.course = data;
+                                CourseIndividualProfileController.course = data;
                                 WelcomeScreen.setRoot("courseProfile");
 
                             }catch (Exception e){
