@@ -15,6 +15,7 @@
                 <TextField fx:id="Coursedescription_f" layoutX="358.0" layoutY="62.0" prefHeight="25.0" prefWidth="165.0" promptText="Description" />
                 <TextField fx:id="courseInit_f" layoutX="181.0" layoutY="62.0" prefHeight="25.0" prefWidth="131.0" promptText="Course initial" />
                 <Button fx:id="saveCourse" layoutX="545.0" layoutY="62.0" mnemonicParsing="false" onAction="#saveCourseFunction" text="Save" />
+            <Button layoutX="29.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToMainPage" text="Main page" />
             </children>
         </AnchorPane>
     </top>

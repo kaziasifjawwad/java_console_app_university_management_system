@@ -202,4 +202,9 @@ public class TeacherFormController implements Initializable {
         tableOtTeacher.getColumns().add(colBtn);
     }
 
+    @FXML
+    void goToMainPage(ActionEvent event)throws  Exception{
+        WelcomeScreen.setRoot("adminMainPage");
+    }
+
 }

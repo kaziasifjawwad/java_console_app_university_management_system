@@ -5,7 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import org.brainstation.frontend.WelcomeScreen;
 
-public class AdminViewController {
+
+public class AdminMainPageViewController {
 
     @FXML
     private Button teacherView;
@@ -13,6 +14,11 @@ public class AdminViewController {
     @FXML
     void gotoTeacherForm(ActionEvent event) throws Exception{
         WelcomeScreen.setRoot("teacherForm");
+    }
+
+    @FXML
+    void gotoCourseForm(ActionEvent event)throws  Exception{
+        WelcomeScreen.setRoot("courseForm");
     }
 
 }

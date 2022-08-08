@@ -12,7 +12,7 @@ public class WelcomeScreen {
     private static Scene scene;
 
     public void showWelcomeScene(Stage stage) throws Exception{
-        scene = new Scene(loadFXML("courseForm"),800,800);
+        scene = new Scene(loadFXML("adminMainPage"),800,800);
         System.out.println(scene+"***************************");
         stage.setScene(scene);
         stage.show();

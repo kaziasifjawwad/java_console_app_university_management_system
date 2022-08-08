@@ -164,5 +164,10 @@ public class CourseFormController implements Initializable{
         updateCourses();
     }
 
+    @FXML
+    void goToMainPage(ActionEvent event)throws  Exception{
+        WelcomeScreen.setRoot("adminMainPage");
+    }
+
 
 }
