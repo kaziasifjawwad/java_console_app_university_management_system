@@ -3,15 +3,20 @@ package org.brainstation.frontend.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
+import org.brainstation.App;
 import org.brainstation.backend.consoleDataBase.Database;
 import org.brainstation.backend.user.Teacher;
 import javafx.util.Callback;
+import org.brainstation.frontend.WelcomeScreen;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -67,7 +72,8 @@ public class TeacherFormController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateTeachers();
 //        editableCols();
-        addButtonToTableForUpdate();
+        addButtonToTableForDelete();
+        addButtonToTableForView();
     }
 
     public void updateTeachers(){
@@ -112,7 +118,7 @@ public class TeacherFormController implements Initializable {
     }
 
 
-    private void addButtonToTableForUpdate() {
+    private void addButtonToTableForDelete() {
         TableColumn<Teacher, Void> colBtn = new TableColumn("Delete");
         Callback<TableColumn<Teacher, Void>, TableCell<Teacher, Void>> cellFactory = new Callback<TableColumn<Teacher, Void>, TableCell<Teacher, Void>>() {
             @Override
@@ -129,6 +135,57 @@ public class TeacherFormController implements Initializable {
                             Database.getInstance().save();
                             getTableView().getItems().remove(data);
                             getTableView().refresh();
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+        colBtn.setCellFactory(cellFactory);
+        tableOtTeacher.getColumns().add(colBtn);
+    }
+
+    private void addButtonToTableForView() {
+        TableColumn<Teacher, Void> colBtn = new TableColumn("View");
+        Callback<TableColumn<Teacher, Void>, TableCell<Teacher, Void>> cellFactory = new Callback<TableColumn<Teacher, Void>, TableCell<Teacher, Void>>() {
+            @Override
+            public TableCell<Teacher, Void> call(final TableColumn<Teacher, Void> param) {
+                final TableCell<Teacher, Void> cell = new TableCell<Teacher, Void>() {
+
+                    private final Button btn = new Button("View full pofile");
+
+                    {
+                        btn.setStyle("-fx-background-color: #5656fd;-fx-text-fill: white");
+
+                        btn.setOnAction((ActionEvent event) -> {
+                            Teacher data = getTableView().getItems().get(getIndex());
+                            Stage stage = new Stage();
+                            try{
+//                                FXMLLoader loader = new FXMLLoader(App.class.getResource("teacherProfile.fxml"));
+//                                Parent load = loader.load();
+//                                Scene scene = new Scene(load,800,800);
+//                                System.out.println(scene+"==============");
+//                                TeacherIndividualProfileController teacher = loader.getController();
+//                                teacher.setTeacher(data);
+//                                stage.setScene(scene);
+//                                stage.show();
+                                TeacherIndividualProfileController.teacher = data;
+                                WelcomeScreen.setRoot("teacherProfile");
+
+                            }catch (Exception e){
+                                System.out.println(e);
+                            }
+
                         });
                     }
 

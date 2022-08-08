@@ -26,7 +26,6 @@
                 <TableColumn fx:id="firstName_p" prefWidth="100.0" text="First Name" />
                 <TableColumn fx:id="lastName_p" prefWidth="109.0" text="Last Name" />
                   <TableColumn fx:id="email_p" prefWidth="111.0" text="Email" />
-                  <TableColumn fx:id="updateTeacher" prefWidth="75.0" text="Update" />
               </columns>
             </TableView>
          </children>
