@@ -78,6 +78,10 @@ public class Database {
         HelperDatabaseClass.saveLine(this.modelId,DatabaseConfiguration.idHandler);
     }
 
+    public void deleteTeacher(Teacher teacher){
+        this.teacherDatabase.deleteTeacher(teacher);
+    }
+
     public List<Course> readCourseList(){return this.courseDataBase.readList();}
     public List<Course> getCourselist(){return this.courseDataBase.getCourselist();}
     public void saveCourse(Course course){

@@ -3,17 +3,15 @@ package org.brainstation.frontend.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.brainstation.backend.consoleDataBase.Database;
 import org.brainstation.backend.user.Teacher;
-import org.brainstation.backend.user.User;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -68,7 +66,8 @@ public class TeacherFormController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateTeachers();
-        editableCols();
+//        editableCols();
+        addButtonToTableForUpdate();
     }
 
     public void updateTeachers(){
@@ -76,7 +75,7 @@ public class TeacherFormController implements Initializable {
         firstName_p.setCellValueFactory(new PropertyValueFactory<Teacher, String>("firstName"));
         lastName_p.setCellValueFactory(new PropertyValueFactory<Teacher, String>("lastName"));
         email_p.setCellValueFactory(new PropertyValueFactory<Teacher, String>("email"));
-        updateTeacher.setCellValueFactory(new PropertyValueFactory<Teacher, Button>("updateButton"));
+//        updateTeacher.setCellValueFactory(new PropertyValueFactory<Teacher, Button>("updateButton"));
         tableOtTeacher.setItems(teachers);
 
 
@@ -84,30 +83,70 @@ public class TeacherFormController implements Initializable {
 
     private void editableCols(){
         firstName_p.setCellFactory(TextFieldTableCell.forTableColumn());
-        firstName_p.setOnEditCommit(
-                e->{
-                    e.getTableView().getItems().get(
-                            e.getTablePosition().getRow()
-                    ).setFirstName(e.getNewValue());
-                }
-        );
+//        firstName_p.setOnEditCommit(
+//                e->{
+//                    e.getTableView().getItems().get(
+//                            e.getTablePosition().getRow()
+//                    ).setFirstName(e.getNewValue());
+//                }
+//        );
 
         email_p.setCellFactory(TextFieldTableCell.forTableColumn());
-        email_p.setOnEditCommit(
-                e->{
-                    e.getTableView().getItems().get(
-                            e.getTablePosition().getRow()
-                    ).setFirstName(e.getNewValue());
-                }
-        );
+//        email_p.setOnEditCommit(
+//                e->{
+//                    e.getTableView().getItems().get(
+//                            e.getTablePosition().getRow()
+//                    ).setFirstName(e.getNewValue());
+//                }
+//        );
         lastName_p.setCellFactory(TextFieldTableCell.forTableColumn());
-        lastName_p.setOnEditCommit(
-                e->{
-                    e.getTableView().getItems().get(
-                            e.getTablePosition().getRow()
-                    ).setFirstName(e.getNewValue());
-                }
-        );
+//        lastName_p.setOnEditCommit(
+//                e->{
+//                    System.out.println(e.getClass()+"**********************");
+//                    e.getTableView().getItems().get(
+//                            e.getTablePosition().getRow()
+//                    ).setFirstName(e.getNewValue());
+//                }
+//        );
         tableOtTeacher.setEditable(true);
     }
+
+
+    private void addButtonToTableForUpdate() {
+        TableColumn<Teacher, Void> colBtn = new TableColumn("Delete");
+        Callback<TableColumn<Teacher, Void>, TableCell<Teacher, Void>> cellFactory = new Callback<TableColumn<Teacher, Void>, TableCell<Teacher, Void>>() {
+            @Override
+            public TableCell<Teacher, Void> call(final TableColumn<Teacher, Void> param) {
+                final TableCell<Teacher, Void> cell = new TableCell<Teacher, Void>() {
+
+                    private final Button btn = new Button("Delete");
+
+                    {
+                        btn.setStyle("-fx-background-color: red;-fx-text-fill: white");
+                        btn.setOnAction((ActionEvent event) -> {
+                            Teacher data = getTableView().getItems().get(getIndex());
+                            Database.getInstance().deleteTeacher(data);
+                            Database.getInstance().save();
+                            getTableView().getItems().remove(data);
+                            getTableView().refresh();
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+        colBtn.setCellFactory(cellFactory);
+        tableOtTeacher.getColumns().add(colBtn);
+    }
+
 }

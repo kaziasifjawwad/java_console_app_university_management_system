@@ -81,5 +81,9 @@ public class TeacherDatabase {
         HelperDatabaseClass.saveData(this.teacherlist,DatabaseConfiguration.teacherDataPath);
     }
 
+    public void deleteTeacher(Teacher teacher){
+        this.teacherlist.remove(teacher);
+    }
+
 
 }

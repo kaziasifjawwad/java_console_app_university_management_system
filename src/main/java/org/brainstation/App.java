@@ -17,13 +17,12 @@ public class App extends Application {
     @Override
     public void start(Stage primarystage) throws IOException {
         stage = primarystage;
-        stage.setResizable(false);
+//        stage.setResizable(false);
         try{
             teacherView.showWelcomeScene(stage);
         }catch (Exception e){
             System.out.println(e);
         }
-
     }
 
     public static void main(String[] args) {
