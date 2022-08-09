@@ -64,6 +64,7 @@ public class Database {
 
     public List<Teacher> readTeacherList(){return this.teacherDatabase.readList();}
     public List<Teacher> getTeacherlist(){return this.teacherDatabase.getTeacherlist();}
+
     public void saveTeacher(Teacher teacher){
         int id=this.modelId.get(0);
         this.teacherDatabase.saveTeacher(teacher,id);
@@ -93,6 +94,7 @@ public class Database {
     }
 
     public void save(){
+        System.out.println(this.teacherDatabase.toString());
         this.teacherDatabase.saveAllTeacher();
         this.courseDataBase.saveAllCourse();
         this.sectionDatabase.saveAllSection();

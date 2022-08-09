@@ -54,11 +54,9 @@ public class TeacherFormController implements Initializable {
 
 
     public void saveTeacher(ActionEvent actionEvent){
-        System.out.println(firstName.getText());
         Teacher teacher = new Teacher(
                 firstName.getText(),lastName.getText(),email.getText(),"teacher"
         );
-        System.out.println(teacher);
         database.saveTeacher(teacher);
         database.save();
         updateTeachers();
@@ -67,7 +65,6 @@ public class TeacherFormController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateTeachers();
-//        editableCols();
         addButtonToTableForDelete();
         addButtonToTableForView();
     }
@@ -77,40 +74,9 @@ public class TeacherFormController implements Initializable {
         firstName_p.setCellValueFactory(new PropertyValueFactory<Teacher, String>("firstName"));
         lastName_p.setCellValueFactory(new PropertyValueFactory<Teacher, String>("lastName"));
         email_p.setCellValueFactory(new PropertyValueFactory<Teacher, String>("email"));
-//        updateTeacher.setCellValueFactory(new PropertyValueFactory<Teacher, Button>("updateButton"));
         tableOtTeacher.setItems(teachers);
 
 
-    }
-
-    private void editableCols(){
-        firstName_p.setCellFactory(TextFieldTableCell.forTableColumn());
-//        firstName_p.setOnEditCommit(
-//                e->{
-//                    e.getTableView().getItems().get(
-//                            e.getTablePosition().getRow()
-//                    ).setFirstName(e.getNewValue());
-//                }
-//        );
-
-        email_p.setCellFactory(TextFieldTableCell.forTableColumn());
-//        email_p.setOnEditCommit(
-//                e->{
-//                    e.getTableView().getItems().get(
-//                            e.getTablePosition().getRow()
-//                    ).setFirstName(e.getNewValue());
-//                }
-//        );
-        lastName_p.setCellFactory(TextFieldTableCell.forTableColumn());
-//        lastName_p.setOnEditCommit(
-//                e->{
-//                    System.out.println(e.getClass()+"**********************");
-//                    e.getTableView().getItems().get(
-//                            e.getTablePosition().getRow()
-//                    ).setFirstName(e.getNewValue());
-//                }
-//        );
-        tableOtTeacher.setEditable(true);
     }
 
 
@@ -167,14 +133,6 @@ public class TeacherFormController implements Initializable {
                             Teacher data = getTableView().getItems().get(getIndex());
                             Stage stage = new Stage();
                             try{
-//                                FXMLLoader loader = new FXMLLoader(App.class.getResource("teacherProfile.fxml"));
-//                                Parent load = loader.load();
-//                                Scene scene = new Scene(load,800,800);
-//                                System.out.println(scene+"==============");
-//                                TeacherIndividualProfileController teacher = loader.getController();
-//                                teacher.setTeacher(data);
-//                                stage.setScene(scene);
-//                                stage.show();
                                 TeacherIndividualProfileController.teacher = data;
                                 WelcomeScreen.setRoot("teacherProfile");
 

@@ -23,7 +23,6 @@ public class HelperDatabaseClass {
     }
 
     public static void saveData(List list,String path){
-        System.out.println(list.toString());
         try {
             FileWriter myWriter = new FileWriter(path);
             for(int index = 0;index<list.size();index++){
@@ -31,7 +30,6 @@ public class HelperDatabaseClass {
             }
 
             myWriter.close();
-            System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -43,7 +41,7 @@ public class HelperDatabaseClass {
             FileWriter myWriter = new FileWriter(path);
             myWriter.write(list.toString());
             myWriter.close();
-            System.out.println("Successfully wrote to the file.");
+//            System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();

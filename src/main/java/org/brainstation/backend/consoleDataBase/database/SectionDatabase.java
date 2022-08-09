@@ -71,7 +71,7 @@ public class SectionDatabase {
     }
 
     public void saveAllSection(){
-        HelperDatabaseClass.saveData(this.sectionList,DatabaseConfiguration.teacherDataPath);
+        HelperDatabaseClass.saveData(this.sectionList,DatabaseConfiguration.sectionDataPath);
     }
 
     public void deleteSection(Section section){
