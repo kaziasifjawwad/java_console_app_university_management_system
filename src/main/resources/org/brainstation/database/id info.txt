@@ -1,2 +1,5 @@
 0-->teacher
 1--->studnet
+2--->course
+3---> section
+4---> exam

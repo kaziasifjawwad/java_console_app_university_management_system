@@ -83,7 +83,7 @@ public class Database {
         int id=this.modelId.get(1);
         this.courseDataBase.saveCourse(course,id);
         id++;
-        this.modelId.add(1,id);
+        this.modelId.set(2,id);
         HelperDatabaseClass.saveLine(this.modelId,DatabaseConfiguration.idHandler);
     }
 
