@@ -1,10 +1,8 @@
 package org.brainstation.backend.consoleDataBase;
 
-import org.brainstation.backend.consoleDataBase.database.CourseDataBase;
-import org.brainstation.backend.consoleDataBase.database.HelperDatabaseClass;
-import org.brainstation.backend.consoleDataBase.database.StudentDataBase;
-import org.brainstation.backend.consoleDataBase.database.TeacherDatabase;
+import org.brainstation.backend.consoleDataBase.database.*;
 import org.brainstation.backend.course.Course;
+import org.brainstation.backend.section.Section;
 import org.brainstation.backend.user.Teacher;
 
 import java.io.File;
@@ -14,25 +12,21 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Database {
-
     private static Database jsonDatabase;
-
     private  TeacherDatabase teacherDatabase;
-
     private  CourseDataBase courseDataBase;
-
     private  StudentDataBase studentDataBase;
-
+    private SectionDatabase sectionDatabase;
     private ArrayList<Integer> modelId;
 
     private Database(){}
-
 
     public static Database getInstance(){
         if(jsonDatabase==null){
             jsonDatabase = new Database();
             jsonDatabase.teacherDatabase = TeacherDatabase.getInstance();
             jsonDatabase.courseDataBase = CourseDataBase.getInstance();
+            jsonDatabase.sectionDatabase = SectionDatabase.getInstance();
 //            jsonDatabase.studentDataBase = StudentDataBase.getInstance();
             jsonDatabase.modelId = getModelIdFile();
         }
@@ -91,6 +85,8 @@ public class Database {
         this.modelId.add(1,id);
         HelperDatabaseClass.saveLine(this.modelId,DatabaseConfiguration.idHandler);
     }
+
+//    **************************** COURSE *************************************************
     public Course getCourseById(int courseId){return this.courseDataBase.getCourseById(courseId);}
     public void deleteCourse(Course course){
         this.courseDataBase.deleteCourse(course);
@@ -99,12 +95,23 @@ public class Database {
     public void save(){
         this.teacherDatabase.saveAllTeacher();
         this.courseDataBase.saveAllCourse();
+        this.sectionDatabase.saveAllSection();
     }
 
 
-
-
-
+//    *********************************SECTION*********************************************
+    public List<Section> getSectionlist(){
+        return sectionDatabase.getSectionlist();
+    }
+    public void setSectionlist(List<Section> sectionList) {
+        sectionDatabase.setSectionlist(sectionList);
+    }
+    public Section getSectionById(int sectionId) {
+        return sectionDatabase.getSectionById(sectionId);
+    }
+    public void deleteSection(Section section){
+        sectionDatabase.deleteSection(section);
+    }
 
 
 

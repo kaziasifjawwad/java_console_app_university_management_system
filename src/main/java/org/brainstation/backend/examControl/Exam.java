@@ -1,29 +1,22 @@
 package org.brainstation.backend.examControl;
-
-
-import org.brainstation.backend.course.Course;
-import org.brainstation.backend.user.Student;
-import org.brainstation.backend.user.Teacher;
+import org.brainstation.backend.consoleDataBase.DatabaseConfiguration;
 
 public class Exam {
-    private static int examId;
+    private int examId;
     private double totalMarks;
-    private double obtainedMarks;
-    private Course course;
-    private Student student;
-    private Teacher teacher;
+    private int section;
     private double passMarks;
 
-    public Exam(){}
-    public Exam(double totalMarks, double obtainedMarks, Course course, Student student, Teacher teacher, double passMarks) {
-        this.totalMarks = totalMarks;
-        this.obtainedMarks = obtainedMarks;
-        this.course = course;
-        this.student = student;
-        this.teacher = teacher;
-        this.passMarks = passMarks;
-    }
+    private String examType;
 
+    public Exam(){}
+
+    public Exam(double totalMarks, int section, double passMarks, String examType) {
+        this.totalMarks = totalMarks;
+        this.section = section;
+        this.passMarks = passMarks;
+        this.examType = examType;
+    }
 
     public double getTotalMarks() {
         return totalMarks;
@@ -32,37 +25,12 @@ public class Exam {
     public void setTotalMarks(double totalMarks) {
         this.totalMarks = totalMarks;
     }
-
-    public double getObtainedMarks() {
-        return obtainedMarks;
+    public int getSection() {
+        return section;
     }
 
-    public void setObtainedMarks(double obtainedMarks) {
-        this.obtainedMarks = obtainedMarks;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+    public void setSection(int course) {
+        this.section = course;
     }
 
     public double getPassMarks() {
@@ -79,5 +47,26 @@ public class Exam {
 
     public void setExamId(int examId) {
         this.examId = examId;
+    }
+
+    public String getExamType() {
+        return examType;
+    }
+
+    public void setExamType(String examType) {
+        this.examType = examType;
+    }
+
+    public String toString(){
+        String splitter = DatabaseConfiguration.splitter;
+        return this.examId+
+                splitter+
+                this.totalMarks+
+                splitter+
+                this.section+
+                splitter+
+                this.passMarks+
+                splitter+
+                this.examType;
     }
 }

@@ -1,40 +1,46 @@
 package org.brainstation.backend.section;
 
-import org.brainstation.backend.course.Course;
-import org.brainstation.backend.user.Student;
-import org.brainstation.backend.user.Teacher;
-
+import org.brainstation.backend.consoleDataBase.DatabaseConfiguration;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Section {
 
-    private static int sectionId;
-    private Course course;
-    private List<Student> students = new LinkedList<>();
+    public int getSectionId() {
+        return sectionId;
+    }
+
+    public void setSectionId(int sectionId) {
+        this.sectionId = sectionId;
+    }
+
+    private int sectionId;
+    private int courseId;
+    private List<Integer> students = new LinkedList<>();
     private int sectionNumber;
-    private Teacher teacher;
+    private int teacher;
 
     public Section(){}
-    public Section(Course course, int sectionNumber, Teacher teacher) {
-        this.course = course;
+    public Section(int course, int sectionNumber) {
+        this.courseId = course;
         this.sectionNumber = sectionNumber;
-        this.teacher = teacher;
     }
 
-    public Course getCourse() {
-        return course;
+    public int getCourse() {
+        return courseId;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setCourse(int course) {
+        this.courseId = course;
     }
 
-    public List<Student> getStudents() {
+    public List<Integer> getStudents() {
         return students;
     }
 
-    public void setStudents(List<Student> students) {
+    public void setStudent(int studentId){this.students.add(studentId);}
+
+    public void setStudents(List<Integer> students) {
         this.students = students;
     }
 
@@ -46,11 +52,11 @@ public class Section {
         this.sectionNumber = sectionNumber;
     }
 
-    public Teacher getTeacher() {
+    public int getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(Teacher teacher) {
+    public void setTeacher(int teacher) {
         this.teacher = teacher;
     }
 
@@ -60,5 +66,18 @@ public class Section {
 
     public void setCourseId(int courseId) {
         this.sectionId = courseId;
+    }
+
+    public String toString(){
+        String splitter = DatabaseConfiguration.splitter;
+        return this.sectionId+
+                splitter+
+                this.courseId+
+                splitter+
+                this.sectionNumber+
+                splitter+
+                this.teacher+
+                splitter+
+                this.students.toString();
     }
 }
